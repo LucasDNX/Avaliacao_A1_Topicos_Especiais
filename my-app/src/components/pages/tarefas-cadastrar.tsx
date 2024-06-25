@@ -51,7 +51,7 @@ function TarefaCadastrar() {
     <div>
       <h1>Cadastrar Tarefa</h1>
       <form onSubmit={cadastrarTarefa}>
-        <label>Tirulo:</label>
+        <label>Titulo:</label>
         <input
           type="text"
           placeholder="Digite o Tirulo"
@@ -69,7 +69,7 @@ function TarefaCadastrar() {
         <label>Categorias:</label>
         <select onChange={(e: any) => setCategoriaId(e.target.value)}>
           {categorias.map((categoria) => (
-            <option value={categoria.id} key={categoria.id}>
+            <option value={categoria.categoriaId} key={categoria.categoriaId}>
               {categoria.nome}
             </option>
           ))}

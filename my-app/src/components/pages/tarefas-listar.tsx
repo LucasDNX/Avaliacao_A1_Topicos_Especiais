@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Tarefa } from "../../models/Tarefa";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function TarefaListar() {
+    const navigate = useNavigate();
     const [tarefas, setTarefas] = useState<Tarefa[]>([]);
 
     useEffect(() => {
@@ -22,11 +24,10 @@ function TarefaListar() {
     }
   
     function Atualizar(id: string){
-      axios.put(`http://localhost:5000/tarefas/alterar/${id}`)
-      .then((resposta) => 
-     {
-        setTarefas(resposta.data)
-     })
+      axios.put<Tarefa>(`http://localhost:5000/tarefas/alterar/${id}`)
+      .then((produtoAlterado) => {
+        navigate("/tarefas/listar");
+      });
     }
   
     return (
